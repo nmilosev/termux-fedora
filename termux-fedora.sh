@@ -10,7 +10,7 @@ cd ~/fedora
 
 # extract the Docker image
 
-/data/data/com.termux/files/usr/bin/tar xvf Fedora-Docker-Base-24-1.2.armhfp.tar.xz --strip-components=1
+/data/data/com.termux/files/usr/bin/tar xvf Fedora-Docker-Base-24-1.2.armhfp.tar.xz --strip-components=1 --exclude json --exclude VERSION
 
 # extract the rootfs
 
@@ -18,6 +18,7 @@ cd ~/fedora
 
 # cleanup
 
+chmod +w .
 rm layer.tar
 rm Fedora-Docker-Base-24-1.2.armhfp.tar.xz
 rm json
