@@ -1,10 +1,6 @@
-# refresh the cache
-
-apt update
-
 # install necessary packages
 
-apt install proot wget tar -y
+apt install proot tar -y
 
 # get the docker image
 
@@ -30,7 +26,7 @@ rm VERSION
 # make a shortcut
 
 cat > /data/data/com.termux/files/usr/bin/fedora <<- EOM
-#!/bin/sh
+#!/data/data/com.termux/usr/bin/sh
 proot -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b $HOME /bin/env -i HOME=/root TERM="$TERM" PS1='[root@f24 \W]\$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:/bin /bin/bash --login
 EOM
 
