@@ -14,13 +14,17 @@ cd ~/fedora
 
 # extract the rootfs
 
-/data/data/com.termux/files/usr/bin/tar xvpf layer.tar
+/data/data/com.termux/files/usr/bin/tar xpf layer.tar
 
 # cleanup
 
 chmod +w .
 rm layer.tar
 rm Fedora-Docker-Base-24-1.2.armhfp.tar.xz
+
+# fix DNS
+
+echo "nameserver 8.8.8.8" > ~/fedora/etc/resolv.conf
 
 # make a shortcut
 
