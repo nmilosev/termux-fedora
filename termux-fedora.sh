@@ -21,13 +21,11 @@ cd ~/fedora
 chmod +w .
 rm layer.tar
 rm Fedora-Docker-Base-24-1.2.armhfp.tar.xz
-rm json
-rm VERSION
 
 # make a shortcut
 
 cat > /data/data/com.termux/files/usr/bin/fedora <<- EOM
-#!/data/data/com.termux/usr/bin/sh
+#!/data/data/com.termux/files/usr/bin/sh
 proot -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b $HOME /bin/env -i HOME=/root TERM="$TERM" PS1='[root@f24 \W]\$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin:/bin /bin/bash --login
 EOM
 
