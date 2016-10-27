@@ -8,6 +8,8 @@ case "$1" in
 	    ;;
 	f25beta_arm)
 	    DOCKERIMAGE=http://dl.fedoraproject.org/pub/fedora/linux/releases/test/25_Beta/Docker/armhfp/images/Fedora-Docker-Base-25_Beta-1.1.armhfp.tar.xz
+	f24_arm64)
+	    DOCKERIMAGE=https://dl.fedoraproject.org/pub/fedora-secondary/releases/24/Docker/aarch64/images/Fedora-Docker-Base-24-1.1.aarch64.tar.xz
             ;;
 	f25beta_arm64)
 	    DOCKERIMAGE=http://dl.fedoraproject.org/pub/fedora-secondary/releases/test/25_Beta/Docker/aarch64/images/Fedora-Docker-Base-25_Beta-1.2.aarch64.tar.xz
@@ -17,7 +19,7 @@ case "$1" in
 	    exit 0
             ;;
 	*)
-	    echo $"Usage: $0 {f24_arm|f25beta_arm|f25beta_arm64|uninstall}"
+	    echo $"Usage: $0 {f24_arm|f25beta_arm|f24_arm64|f25beta_arm64|uninstall}"
 	    exit 2
 esac
 
