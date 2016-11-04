@@ -6,9 +6,10 @@ Currently it supports Fedora 24 ARM32, Fedora 25 Beta ARM32/ARM64
 # Instructions
 
 Supported images:
-f24_arm
-f25beta_arm
-f25beta_arm64
+
+- f24_arm
+- f25beta_arm
+- f25beta_arm64
 
 
 ```
