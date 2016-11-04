@@ -17,12 +17,20 @@ apt update && apt install wget -y && /data/data/com.termux/files/usr/bin/wget ht
 
 sh termux-fedora.sh [desired image]
 
-# for example:
+```
+
+For example:
+
+```
 
 sh termux-fedora.sh f25beta_arm64
 
 ```
 
-or
+To uninstall:
+
+```
+sh termux-fedora.sh uninstall
+```
 
 https://nmilosev.svbtle.com/termuxfedora-install-fedora-on-your-phone-with-termux
