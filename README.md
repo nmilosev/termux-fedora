@@ -1,7 +1,7 @@
 # termux-fedora
 A script to install a Fedora chroot into Termux.
 
-Currently it supports Fedora 24 ARM32, Fedora 25 Beta ARM32/ARM64
+Currently it supports Fedora 25 ARM/ARM64
 
 # Alternative
 
