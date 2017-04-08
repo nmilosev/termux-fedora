@@ -9,12 +9,18 @@ case "$1" in
 	f25_arm64)
 	    DOCKERIMAGE=http://dl.fedoraproject.org/pub/fedora-secondary/releases/25/Docker/aarch64/images/Fedora-Docker-Base-25-1.3.aarch64.tar.xz
 	    ;;
+	f26alpha_arm)
+	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/test/26_Alpha/Docker/armhfp/images/Fedora-Docker-Base-26_Alpha-1.7.armhfp.tar.xz
+	    ;;
+	f26alpha_arm64)
+	    DOCKERIMAGE=http://dl.fedoraproject.org/pub/fedora-secondary/releases/test/26_Alpha/Docker/aarch64/images/Fedora-Docker-Base-26_Alpha-1.7.aarch64.tar.xz
+	    ;;
 	uninstall)
 	    rm -rf ~/fedora
 	    exit 0
             ;;
 	*)
-	    echo $"Usage: $0 {f25_arm|f25_arm64|uninstall}"
+	    echo $"Usage: $0 {f25_arm|f25_arm64|f26alpha_arm|f26alpha_arm64|uninstall}"
 	    exit 2
 esac
 

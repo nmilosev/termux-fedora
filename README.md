@@ -1,7 +1,7 @@
 # termux-fedora
 A script to install a Fedora chroot into Termux.
 
-Currently it supports Fedora 25 ARM/ARM64
+Currently it supports Fedora 25 and 26 Alpha ARM/ARM64
 
 # Alternative
 
@@ -13,6 +13,8 @@ Supported images:
 
 - f25_arm
 - f25_arm64
+- f26alpha_arm
+- f26alpha_arm64
 
 ```
 apt update && apt install wget -y && /data/data/com.termux/files/usr/bin/wget https://raw.githubusercontent.com/nmilosev/termux-fedora/master/termux-fedora.sh
