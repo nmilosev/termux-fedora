@@ -3,23 +3,25 @@
 # input validator and help
 
 case "$1" in
-	f24_arm)
-	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/24/Docker/armhfp/images/Fedora-Docker-Base-24-1.2.armhfp.tar.xz
+	f25_arm)
+	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/25/Docker/armhfp/images/Fedora-Docker-Base-25-1.3.armhfp.tar.xz
 	    ;;
-	f25beta_arm)
-	    DOCKERIMAGE=http://dl.fedoraproject.org/pub/fedora/linux/releases/test/25_Beta/Docker/armhfp/images/Fedora-Docker-Base-25_Beta-1.1.armhfp.tar.xz
-	f24_arm64)
-	    DOCKERIMAGE=https://dl.fedoraproject.org/pub/fedora-secondary/releases/24/Docker/aarch64/images/Fedora-Docker-Base-24-1.1.aarch64.tar.xz
             ;;
-	f25beta_arm64)
-	    DOCKERIMAGE=http://dl.fedoraproject.org/pub/fedora-secondary/releases/test/25_Beta/Docker/aarch64/images/Fedora-Docker-Base-25_Beta-1.2.aarch64.tar.xz
+	f25_arm64)
+	    DOCKERIMAGE=http://dl.fedoraproject.org/pub/fedora-secondary/releases/25/Docker/aarch64/images/Fedora-Docker-Base-25-1.3.aarch64.tar.xz
+	    ;;
+	f26alpha_arm)
+	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/test/26_Alpha/Docker/armhfp/images/Fedora-Docker-Base-26_Alpha-1.7.armhfp.tar.xz
+	    ;;
+	f26alpha_arm64)
+	    DOCKERIMAGE=http://dl.fedoraproject.org/pub/fedora-secondary/releases/test/26_Alpha/Docker/aarch64/images/Fedora-Docker-Base-26_Alpha-1.7.aarch64.tar.xz
 	    ;;
 	uninstall)
 	    rm -rf ~/fedora
 	    exit 0
             ;;
 	*)
-	    echo $"Usage: $0 {f24_arm|f25beta_arm|f24_arm64|f25beta_arm64|uninstall}"
+	    echo $"Usage: $0 {f25_arm|f25_arm64|f26alpha_arm|f26alpha_arm64|uninstall}"
 	    exit 2
 esac
 
@@ -56,7 +58,7 @@ echo "nameserver 8.8.8.8" > ~/fedora/etc/resolv.conf
 
 cat > /data/data/com.termux/files/usr/bin/startfedora <<- EOM
 #!/data/data/com.termux/files/usr/bin/bash
-proot -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b $HOME /bin/env -i HOME=/root TERM="$TERM" PS1='[termux@fedora \W]\$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login
+proot --link2symlink -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b $HOME /bin/env -i HOME=/root TERM="$TERM" PS1='[termux@fedora \W]\$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login
 EOM
 
 chmod +x /data/data/com.termux/files/usr/bin/startfedora
