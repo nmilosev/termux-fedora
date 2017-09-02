@@ -3,25 +3,17 @@
 # input validator and help
 
 case "$1" in
-	f25_arm)
-	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/25/Docker/armhfp/images/Fedora-Docker-Base-25-1.3.armhfp.tar.xz
+	f26_arm)
+	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/26/Docker/armhfp/images/Fedora-Docker-Base-26-1.5.armhfp.tar.xz
 	    ;;
-            ;;
-	f25_arm64)
-	    DOCKERIMAGE=http://dl.fedoraproject.org/pub/fedora-secondary/releases/25/Docker/aarch64/images/Fedora-Docker-Base-25-1.3.aarch64.tar.xz
-	    ;;
-	f26alpha_arm)
-	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/test/26_Alpha/Docker/armhfp/images/Fedora-Docker-Base-26_Alpha-1.7.armhfp.tar.xz
-	    ;;
-	f26alpha_arm64)
-	    DOCKERIMAGE=http://dl.fedoraproject.org/pub/fedora-secondary/releases/test/26_Alpha/Docker/aarch64/images/Fedora-Docker-Base-26_Alpha-1.7.aarch64.tar.xz
+	f26_arm64)
+	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora-secondary/releases/26/Docker/aarch64/images/Fedora-Docker-Base-26-1.5.aarch64.tar.xz
 	    ;;
 	uninstall)
 	    rm -rf ~/fedora
 	    exit 0
-            ;;
 	*)
-	    echo $"Usage: $0 {f25_arm|f25_arm64|f26alpha_arm|f26alpha_arm64|uninstall}"
+	    echo $"Usage: $0 {f26_arm|f26_arm64|uninstall}"
 	    exit 2
 esac
 
@@ -58,7 +50,7 @@ echo "nameserver 8.8.8.8" > ~/fedora/etc/resolv.conf
 
 cat > /data/data/com.termux/files/usr/bin/startfedora <<- EOM
 #!/data/data/com.termux/files/usr/bin/bash
-proot --link2symlink -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b $HOME /bin/env -i HOME=/root TERM="$TERM" PS1='[termux@fedora \W]\$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login
+proot --link2symlink -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b /storage/ -b $HOME -w $HOME /bin/env -i HOME=/root TERM="$TERM" PS1='[termux@fedora \W]\$ ' PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login
 EOM
 
 chmod +x /data/data/com.termux/files/usr/bin/startfedora
