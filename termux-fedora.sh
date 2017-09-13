@@ -12,9 +12,11 @@ case "$1" in
 	uninstall)
 	    rm -rf ~/fedora
 	    exit 0
+	    ;;
 	*)
 	    echo $"Usage: $0 {f26_arm|f26_arm64|uninstall}"
 	    exit 2
+	    ;;
 esac
 
 
