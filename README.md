@@ -23,7 +23,7 @@ sh termux-fedora.sh [desired image]
 For example:
 
 ```
-sh termux-fedora.sh f26_arm64
+sh termux-fedora.sh f27_arm64
 ```
 
 To uninstall:
