@@ -10,6 +10,7 @@ case "$1" in
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora-secondary/releases/27/Docker/aarch64/images/Fedora-Docker-Base-27-1.6.aarch64.tar.xz
 	    ;;
 	uninstall)
+	    chmod -R 777 ~/fedora
 	    rm -rf ~/fedora
 	    exit 0
 	    ;;
