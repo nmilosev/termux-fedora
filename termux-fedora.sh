@@ -3,6 +3,12 @@
 # input validator and help
 
 case "$1" in
+	f26_arm)
+	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/26/Docker/armhfp/images/Fedora-Docker-Base-26-1.5.armhfp.tar.xz
+	    ;;
+        f26_arm64)
+	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora-secondary/releases/26/Docker/aarch64/images/Fedora-Docker-Base-26-1.5.aarch64.tar.xz
+	    ;;
 	f27_arm)
 	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/27/Docker/armhfp/images/Fedora-Docker-Base-27-1.6.armhfp.tar.xz
 	    ;;
@@ -15,7 +21,7 @@ case "$1" in
 	    exit 0
 	    ;;
 	*)
-	    echo $"Usage: $0 {f27_arm|f27_arm64|uninstall}"
+	    echo $"Usage: $0 {f26_arm|f26_arm64|f27_arm|f27_arm64|uninstall}"
 	    exit 2
 	    ;;
 esac
