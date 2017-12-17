@@ -17,6 +17,7 @@ case "$1" in
 	*)
 	    echo $"Usage: $0 {f27_arm|f27_arm64|uninstall}"
 	    exit 2
+	    ;;
 esac
 
 

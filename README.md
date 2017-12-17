@@ -1,7 +1,7 @@
 # termux-fedora
 A script to install a Fedora chroot into Termux.
 
-Currently it supports Fedora 26 ARM/ARM64
+Currently it supports Fedora 27 ARM/ARM64
 
 # Alternative
 
@@ -11,8 +11,8 @@ You can also try running https://github.com/nmilosev/anyfed which is a bit more 
 
 Supported images:
 
-- f26_arm
-- f26_arm64
+- f27_arm
+- f27_arm64
 
 ```
 apt update && apt install wget -y && /data/data/com.termux/files/usr/bin/wget https://raw.githubusercontent.com/nmilosev/termux-fedora/master/termux-fedora.sh
@@ -23,7 +23,7 @@ sh termux-fedora.sh [desired image]
 For example:
 
 ```
-sh termux-fedora.sh f26_arm64
+sh termux-fedora.sh f27_arm64
 ```
 
 To uninstall:
