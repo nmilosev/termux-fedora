@@ -15,13 +15,16 @@ case "$1" in
 	f27_arm64)
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora-secondary/releases/27/Docker/aarch64/images/Fedora-Docker-Base-27-1.6.aarch64.tar.xz
 	    ;;
+	f28_arm64)
+	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/28/Container/aarch64/images/Fedora-Container-Base-28-1.1.aarch64.tar.xz
+	    ;;
 	uninstall)
 	    chmod -R 777 ~/fedora
 	    rm -rf ~/fedora
 	    exit 0
 	    ;;
 	*)
-	    echo $"Usage: $0 {f26_arm|f26_arm64|f27_arm|f27_arm64|uninstall}"
+	    echo $"Usage: $0 {f26_arm|f26_arm64|f27_arm|f27_arm64|f28_arm64|uninstall}"
 	    exit 2
 	    ;;
 esac
@@ -29,7 +32,7 @@ esac
 
 # install necessary packages
 
-apt update && apt install proot tar -y
+pkg install proot tar -y
 
 # get the docker image
 
