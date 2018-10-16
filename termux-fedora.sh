@@ -3,12 +3,6 @@
 # input validator and help
 
 case "$1" in
-	f26_arm)
-	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/26/Docker/armhfp/images/Fedora-Docker-Base-26-1.5.armhfp.tar.xz
-	    ;;
-        f26_arm64)
-	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora-secondary/releases/26/Docker/aarch64/images/Fedora-Docker-Base-26-1.5.aarch64.tar.xz
-	    ;;
 	f27_arm)
 	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/27/Docker/armhfp/images/Fedora-Docker-Base-27-1.6.armhfp.tar.xz
 	    ;;
@@ -18,13 +12,16 @@ case "$1" in
 	f28_arm64)
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/28/Container/aarch64/images/Fedora-Container-Base-28-1.1.aarch64.tar.xz
 	    ;;
+	f29_arm64)
+	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/test/29_Beta/Container/aarch64/images/Fedora-Container-Base-29_Beta-1.5.aarch64.tar.xz
+	    ;;
 	uninstall)
 	    chmod -R 777 ~/fedora
 	    rm -rf ~/fedora
 	    exit 0
 	    ;;
 	*)
-	    echo $"Usage: $0 {f26_arm|f26_arm64|f27_arm|f27_arm64|f28_arm64|uninstall}"
+	    echo $"Usage: $0 {f27_arm|f27_arm64|f28_arm64|f29_arm64|uninstall}"
 	    exit 2
 	    ;;
 esac
@@ -56,7 +53,7 @@ rm fedora.tar.xz
 
 # fix DNS
 
-echo "nameserver 8.8.8.8" > ~/fedora/etc/resolv.conf
+echo "nameserver 1.1.1.1" > ~/fedora/etc/resolv.conf
 
 # make a shortcut
 
