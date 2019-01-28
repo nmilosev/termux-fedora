@@ -3,17 +3,11 @@
 # input validator and help
 
 case "$1" in
-	f27_arm)
-	    DOCKERIMAGE=http://download.fedoraproject.org/pub/fedora/linux/releases/27/Docker/armhfp/images/Fedora-Docker-Base-27-1.6.armhfp.tar.xz
-	    ;;
-	f27_arm64)
-	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora-secondary/releases/27/Docker/aarch64/images/Fedora-Docker-Base-27-1.6.aarch64.tar.xz
-	    ;;
 	f28_arm64)
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/28/Container/aarch64/images/Fedora-Container-Base-28-1.1.aarch64.tar.xz
 	    ;;
 	f29_arm64)
-	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/test/29_Beta/Container/aarch64/images/Fedora-Container-Base-29_Beta-1.5.aarch64.tar.xz
+	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/29/Container/aarch64/images/Fedora-Container-Base-29-1.2.aarch64.tar.xz
 	    ;;
 	uninstall)
 	    chmod -R 777 ~/fedora
@@ -21,7 +15,7 @@ case "$1" in
 	    exit 0
 	    ;;
 	*)
-	    echo $"Usage: $0 {f27_arm|f27_arm64|f28_arm64|f29_arm64|uninstall}"
+	    echo $"Usage: $0 {f28_arm64|f29_arm64|uninstall}"
 	    exit 2
 	    ;;
 esac
@@ -66,4 +60,4 @@ chmod +x /data/data/com.termux/files/usr/bin/startfedora
 
 # all done
 
-echo "All done! Start Fedora with 'startfedora'. Gets update with regular 'dnf update'. "
+echo "All done! Start Fedora with 'startfedora'. Get updates with regular 'dnf update'. "

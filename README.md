@@ -1,7 +1,7 @@
 # termux-fedora
 A script to install a Fedora chroot into Termux.
 
-Currently it supports Fedora 27 ARM/ARM64, Fedora 28 ARM64 and Fedora 29 Beta ARM64.
+Currently it supports Fedora 28 ARM64 and Fedora 29 ARM64.
 
 Starting from Fedora 28, Container image for 32bit ARM is no longer provided.
 
@@ -13,8 +13,6 @@ You can also try running https://github.com/nmilosev/anyfed which is a bit more 
 
 Supported images:
 
-- f27_arm
-- f27_arm64
 - f28_arm64
 - f29_arm64
 
