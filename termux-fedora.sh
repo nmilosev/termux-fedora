@@ -23,7 +23,7 @@ esac
 
 # install necessary packages
 
-pkg install proot tar -y
+pkg install proot tar wget -y
 
 # get the docker image
 
