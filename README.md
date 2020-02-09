@@ -13,6 +13,7 @@ You can also try running https://github.com/nmilosev/anyfed which is a bit more 
 
 Supported images:
 
+- f31_arm64
 - f30_arm64
 - f29_arm64
 
@@ -25,7 +26,7 @@ sh termux-fedora.sh [desired image]
 For example:
 
 ```
-sh termux-fedora.sh f30_arm64
+sh termux-fedora.sh f31_arm64
 ```
 
 To uninstall:
