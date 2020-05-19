@@ -3,11 +3,11 @@
 # input validator and help
 
 case "$1" in
-	f29_arm64)
-	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/29/Container/aarch64/images/Fedora-Container-Base-29-1.2.aarch64.tar.xz
+	f31_arm64)
+	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/aarch64/images/Fedora-Cloud-Base-31-1.9.aarch64.raw.xz
 	    ;;
-        f30_arm64)
-	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/30/Container/aarch64/images/Fedora-Container-Base-30-1.2.aarch64.tar.xz
+        f32_arm64)
+	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/32/Cloud/aarch64/images/Fedora-Cloud-Base-32-1.6.aarch64.raw.xz
 	    ;;
 	uninstall)
 	    chmod -R 777 ~/fedora
@@ -15,7 +15,7 @@ case "$1" in
 	    exit 0
 	    ;;
 	*)
-	    echo $"Usage: $0 {f29_arm64|f30_arm64|uninstall}"
+	    echo $"Usage: $0 {f31_arm64|f32_arm64|uninstall}"
 	    exit 2
 	    ;;
 esac
