@@ -6,16 +6,20 @@ case "$1" in
 	f31_arm64)
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/31/Container/aarch64/images/Fedora-Container-Base-31-1.9.aarch64.tar.xz
 	    ;;
-        f32_arm64)
+	f32_arm64)
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/32/Container/aarch64/images/Fedora-Container-Base-32-1.6.aarch64.tar.xz
+	    ;;
+	f33_arm64)
+	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/33/Container/aarch64/images/Fedora-Container-Base-33-1.2.aarch64.tar.xz
 	    ;;
 	uninstall)
 	    chmod -R 777 ~/fedora
 	    rm -rf ~/fedora
+		rm -f /data/data/com.termux/files/usr/bin/startfedora
 	    exit 0
 	    ;;
 	*)
-	    echo $"Usage: $0 {f31_arm64|f32_arm64|uninstall}"
+	    echo $"Usage: $0 {f31_arm64|f32_arm64|f33_arm64|uninstall}"
 	    exit 2
 	    ;;
 esac
