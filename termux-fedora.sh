@@ -3,11 +3,11 @@
 # input validator and help
 
 case "$1" in
-	f37_arm64)
+	f37)
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/37/Container/aarch64/images/Fedora-Container-Base-37-1.7.aarch64.tar.xz
 	    ;;
-	f36_arm64)
-	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/36/Container/aarch64/images/Fedora-Container-Base-36-1.5.aarch64.tar.xz
+	f38)
+	    DOCKERIMAGE=https://mirror.init7.net/fedora/fedora/linux/releases/38/Container/aarch64/images/Fedora-Container-Minimal-Base-38-1.6.aarch64.tar.xz
 	    ;;
 	uninstall)
 	    chmod -R 777 ~/fedora
@@ -16,7 +16,7 @@ case "$1" in
 	    exit 0
 	    ;;
 	*)
-	    echo $"Usage: $0 {f36_arm64|f37_arm64|uninstall}"
+	    echo $"Usage: $0 {f37|f38|uninstall}"
 	    exit 2
 	    ;;
 esac
@@ -47,8 +47,9 @@ rm layer.tar
 rm fedora.tar.xz
 
 # fix DNS
-
-echo "nameserver 8.8.8.8" > ~/fedora/etc/resolv.conf
+mkdir -P ~/fedora/etc/systemd/resolved.conf.d/
+echo "DNS=185.95.218.42 185.95.218.43" > ~/fedora/etc/systemd/resolved.conf.d/DNS-Overwrite.conf
+echo "FallbackDNS=78.46.244.143 45.91.92.121" >> ~/fedora/etc/systemd/resolved.conf.d/DNS-Overwrite.conf
 
 # make a shortcut
 
