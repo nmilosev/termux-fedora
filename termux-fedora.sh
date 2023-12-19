@@ -2,12 +2,11 @@
 
 # input validator and help
 
+# https://github.com/fedorapackaging/docker-images
+
 case "$1" in
-	f37_arm64)
-	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/37/Container/aarch64/images/Fedora-Container-Base-37-1.7.aarch64.tar.xz
-	    ;;
-	f36_arm64)
-	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/36/Container/aarch64/images/Fedora-Container-Base-36-1.5.aarch64.tar.xz
+	f39)
+	    DOCKERIMAGE=https://mirror.init7.net/fedora/fedora/linux/releases/39/Container/aarch64/images/Fedora-Container-Minimal-Base-39-1.5.aarch64.tar.xz
 	    ;;
 	uninstall)
 	    chmod -R 777 ~/fedora
@@ -16,7 +15,7 @@ case "$1" in
 	    exit 0
 	    ;;
 	*)
-	    echo $"Usage: $0 {f36_arm64|f37_arm64|uninstall}"
+	    echo $"Usage: $0 {f37|f38|uninstall}"
 	    exit 2
 	    ;;
 esac
@@ -28,7 +27,7 @@ pkg install proot tar wget -y
 
 # get the docker image
 
-mkdir ~/fedora
+mkdir -p ~/fedora
 cd ~/fedora
 /data/data/com.termux/files/usr/bin/wget $DOCKERIMAGE -O fedora.tar.xz
 
@@ -47,8 +46,9 @@ rm layer.tar
 rm fedora.tar.xz
 
 # fix DNS
-
-echo "nameserver 8.8.8.8" > ~/fedora/etc/resolv.conf
+mkdir -p ~/fedora/etc/systemd/resolved.conf.d/
+echo "DNS=185.95.218.42 185.95.218.43" > ~/fedora/etc/systemd/resolved.conf.d/DNS-Overwrite.conf
+echo "FallbackDNS=78.46.244.143 45.91.92.121" >> ~/fedora/etc/systemd/resolved.conf.d/DNS-Overwrite.conf
 
 # make a shortcut
 
