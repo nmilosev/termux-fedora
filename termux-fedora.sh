@@ -56,7 +56,7 @@ echo "nameserver 8.8.8.8" > ~/fedora/etc/resolv.conf
 
 cat > /data/data/com.termux/files/usr/bin/startfedora <<- EOM
 #!/data/data/com.termux/files/usr/bin/bash
-unset LD_PRELOAD && proot --link2symlink -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b /storage/ -b $HOME -w $HOME /bin/env -i HOME=/root TERM="$TERM" PS1='[termux@fedora \W]\$ ' LANG=$LANG PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login
+unset LD_PRELOAD && proot --link2symlink -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b /storage/ -b $HOME -w /root /bin/env -i HOME=/root TERM="$TERM" LANG=$LANG PATH=/usr/bin:/usr/sbin /bin/bash --login
 EOM
 
 chmod +x /data/data/com.termux/files/usr/bin/startfedora
