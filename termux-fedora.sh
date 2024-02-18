@@ -3,11 +3,11 @@
 # input validator and help
 
 case "$1" in
-	f37_arm64)
-	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/37/Container/aarch64/images/Fedora-Container-Base-37-1.7.aarch64.tar.xz
+	f38)
+	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/38/Container/aarch64/images/Fedora-Container-Base-38-1.6.aarch64.tar.xz
 	    ;;
-	f36_arm64)
-	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/36/Container/aarch64/images/Fedora-Container-Base-36-1.5.aarch64.tar.xz
+	f39)
+	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/39/Container/aarch64/images/Fedora-Container-Base-39-1.5.aarch64.tar.xz
 	    ;;
 	uninstall)
 	    chmod -R 777 ~/fedora
@@ -15,8 +15,10 @@ case "$1" in
 		rm -f /data/data/com.termux/files/usr/bin/startfedora
 	    exit 0
 	    ;;
+        https://*)
+            DOCKERIMAGE=$1
 	*)
-	    echo $"Usage: $0 {f36_arm64|f37_arm64|uninstall}"
+	    echo $"Usage: $0 {f38|f39|TARURL|uninstall}"
 	    exit 2
 	    ;;
 esac

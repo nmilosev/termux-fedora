@@ -1,20 +1,15 @@
 # termux-fedora
 A script to install a Fedora chroot into Termux.
 
-Currently it supports Fedora 36 ARM64 and Fedora 35 ARM64.
-
-Starting from Fedora 28, Container image for 32bit ARM is no longer provided.
-
-# Alternative
-
-You can also try running https://github.com/nmilosev/anyfed which is a bit more versatile in creating chroot's.
+Currently it supports Fedora 38 ARM64 and Fedora 39 ARM64.
 
 # Instructions
 
-Supported images:
+Supported aarch64 images:
 
-- f35_arm64
-- f36_arm64
+- f38 aarch64
+- f39 aarch64
+- any fedora container tarball url
 
 ```
 pkg install wget -y && /data/data/com.termux/files/usr/bin/wget https://raw.githubusercontent.com/nmilosev/termux-fedora/master/termux-fedora.sh
@@ -25,7 +20,7 @@ sh termux-fedora.sh [desired image]
 For example:
 
 ```
-sh termux-fedora.sh f35_arm64
+sh termux-fedora.sh f39
 ```
 
 To uninstall:
