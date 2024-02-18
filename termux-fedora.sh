@@ -2,6 +2,8 @@
 
 # input validator and help
 
+STARTFEDORA=/data/data/com.termux/files/usr/bin/fedora
+
 case "$1" in
 	f38)
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/38/Container/aarch64/images/Fedora-Container-Base-38-1.6.aarch64.tar.xz
@@ -12,7 +14,7 @@ case "$1" in
 	uninstall)
 	    chmod -R 777 ~/fedora
 	    rm -rf ~/fedora
-		rm -f /data/data/com.termux/files/usr/bin/startfedora
+		rm -f $STARTFEDORA
 	    exit 0
 	    ;;
         https://*)
@@ -54,13 +56,13 @@ echo "nameserver 8.8.8.8" > ~/fedora/etc/resolv.conf
 
 # make a shortcut
 
-cat > /data/data/com.termux/files/usr/bin/startfedora <<- EOM
+cat > $STARTFEDORA <<- EOM
 #!/data/data/com.termux/files/usr/bin/bash
 unset LD_PRELOAD && proot --link2symlink -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b /storage/ -b $HOME -w /root /bin/env -i HOME=/root TERM="$TERM" LANG=$LANG PATH=/usr/bin:/usr/sbin /bin/bash --login
 EOM
 
-chmod +x /data/data/com.termux/files/usr/bin/startfedora
+chmod +x $STARTFEDORA
 
 # all done
 
-echo "All done! Start Fedora with 'startfedora'. Get updates with regular 'dnf update'. "
+echo "All done! Start Fedora with \'$(basename $STARTFEDORA)\'. Get updates with regular 'dnf update'."
