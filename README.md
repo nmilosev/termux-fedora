@@ -14,9 +14,8 @@ or any fedora container tarball url.
 In Termux run:
 ```
 $ pkg install git
-$ git clone https://github.com/juhp/termux-fedora
-$ cd termux-fedora
-$./termux-fedora.sh [f38|f39|URL]
+$ git clone git://github.com/juhp/termux-fedora
+$ termux-fedora/install.sh [f38|f39|URL]
 $ fedora
 ```
 

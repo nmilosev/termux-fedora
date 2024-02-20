@@ -2,7 +2,7 @@
 
 TERMUX_BINDIR=/data/data/com.termux/files/usr/bin
 STARTFEDORA=$TERMUX_BINDIR/fedora
-TOPDIR=~/fedora
+FEDORA=~/fedora
 
 # input validator and help
 case "$1" in
@@ -13,8 +13,8 @@ case "$1" in
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/39/Container/aarch64/images/Fedora-Container-Base-39-1.5.aarch64.tar.xz
 	    ;;
 	uninstall)
-	    chmod -R 777 $TOPDIR
-	    rm -rf $TOPDIR
+	    chmod -R 777 $FEDORA
+	    rm -rf $FEDORA
 		rm -f $STARTFEDORA
 	    exit 0
 	    ;;
@@ -29,11 +29,11 @@ esac
 # install necessary packages
 pkg install proot tar wget make -y
 
-if [ -d "$TOPDIR" ]; then
-    echo $TOPDIR already exists
+if [ -d "$FEDORA" ]; then
+    echo $FEDORA already exists
 else
-    mkdir $TOPDIR
-    cd $TOPDIR
+    mkdir $FEDORA
+    cd $FEDORA
     # get the docker image
     $TERMUX_BINDIR/wget $DOCKERIMAGE -O fedora.tar.xz
 
@@ -49,11 +49,12 @@ else
     rm fedora.tar.xz
 
     # fix DNS
-    echo "nameserver 8.8.8.8" > $TOPDIR/etc/resolv.conf
+    echo "nameserver 8.8.8.8" > $FEDORA/etc/resolv.conf
 fi
 
 # make a shortcut
-cp -p fedora $STARTFEDORA
+TOP=$(dirname $0)
+cp -p $TOP/fedora $STARTFEDORA
 
 # all done
 echo "All done! Start Fedora with \'$(basename $STARTFEDORA)\'. Get updates with regular 'dnf update'."
