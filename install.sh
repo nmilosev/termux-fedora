@@ -20,6 +20,7 @@ case "$1" in
 	    ;;
         https://*)
             DOCKERIMAGE=$1
+            ;;
 	*)
 	    echo $"Usage: $0 {f38|f39|TARURL|uninstall}"
 	    exit 2
