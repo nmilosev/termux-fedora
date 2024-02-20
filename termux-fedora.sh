@@ -1,9 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-# input validator and help
-
 STARTFEDORA=/data/data/com.termux/files/usr/bin/fedora
+TOPDIR=~/fedora
 
+# input validator and help
 case "$1" in
 	f38)
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/38/Container/aarch64/images/Fedora-Container-Base-38-1.6.aarch64.tar.xz
@@ -12,8 +12,8 @@ case "$1" in
 	    DOCKERIMAGE=https://download.fedoraproject.org/pub/fedora/linux/releases/39/Container/aarch64/images/Fedora-Container-Base-39-1.5.aarch64.tar.xz
 	    ;;
 	uninstall)
-	    chmod -R 777 ~/fedora
-	    rm -rf ~/fedora
+	    chmod -R 777 $TOPDIR
+	    rm -rf $TOPDIR
 		rm -f $STARTFEDORA
 	    exit 0
 	    ;;
@@ -25,44 +25,34 @@ case "$1" in
 	    ;;
 esac
 
-
 # install necessary packages
+pkg install proot tar wget make -y
 
-pkg install proot tar wget -y
+if [ -d "$TOPDIR" ]; then
+    echo $TOPDIR already exists
+else
+    mkdir $TOPDIR
+    cd $TOPDIR
+    # get the docker image
+    /data/data/com.termux/files/usr/bin/wget $DOCKERIMAGE -O fedora.tar.xz
 
-# get the docker image
+    # extract the Docker image
+    /data/data/com.termux/files/usr/bin/tar xvf fedora.tar.xz --strip-components=1 --exclude json --exclude VERSION
 
-mkdir ~/fedora
-cd ~/fedora
-/data/data/com.termux/files/usr/bin/wget $DOCKERIMAGE -O fedora.tar.xz
+    # extract the rootfs
+    /data/data/com.termux/files/usr/bin/tar xpf layer.tar
 
-# extract the Docker image
+    # cleanup
+    chmod +w .
+    rm layer.tar
+    rm fedora.tar.xz
 
-/data/data/com.termux/files/usr/bin/tar xvf fedora.tar.xz --strip-components=1 --exclude json --exclude VERSION
-
-# extract the rootfs
-
-/data/data/com.termux/files/usr/bin/tar xpf layer.tar
-
-# cleanup
-
-chmod +w .
-rm layer.tar
-rm fedora.tar.xz
-
-# fix DNS
-
-echo "nameserver 8.8.8.8" > ~/fedora/etc/resolv.conf
+    # fix DNS
+    echo "nameserver 8.8.8.8" > $TOPDIR/etc/resolv.conf
+fi
 
 # make a shortcut
-
-cat > $STARTFEDORA <<- EOM
-#!/data/data/com.termux/files/usr/bin/bash
-unset LD_PRELOAD && proot --link2symlink -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b /storage/ -b $HOME -w /root /bin/env -i HOME=/root TERM="$TERM" LANG=$LANG PATH=/usr/bin:/usr/sbin /bin/bash --login
-EOM
-
-chmod +x $STARTFEDORA
+cp -p fedora $STARTFEDORA
 
 # all done
-
 echo "All done! Start Fedora with \'$(basename $STARTFEDORA)\'. Get updates with regular 'dnf update'."
