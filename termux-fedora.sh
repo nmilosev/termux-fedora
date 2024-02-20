@@ -1,6 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-STARTFEDORA=/data/data/com.termux/files/usr/bin/fedora
+TERMUX_BINDIR=/data/data/com.termux/files/usr/bin
+STARTFEDORA=$TERMUX_BINDIR/fedora
 TOPDIR=~/fedora
 
 # input validator and help
@@ -34,13 +35,13 @@ else
     mkdir $TOPDIR
     cd $TOPDIR
     # get the docker image
-    /data/data/com.termux/files/usr/bin/wget $DOCKERIMAGE -O fedora.tar.xz
+    $TERMUX_BINDIR/wget $DOCKERIMAGE -O fedora.tar.xz
 
     # extract the Docker image
-    /data/data/com.termux/files/usr/bin/tar xvf fedora.tar.xz --strip-components=1 --exclude json --exclude VERSION
+    $TERMUX_BINDIR/tar xvf fedora.tar.xz --strip-components=1 --exclude json --exclude VERSION
 
     # extract the rootfs
-    /data/data/com.termux/files/usr/bin/tar xpf layer.tar
+    $TERMUX_BINDIR/tar xpf layer.tar
 
     # cleanup
     chmod +w .
