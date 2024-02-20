@@ -27,12 +27,12 @@ case "$1" in
 	    ;;
 esac
 
-# install necessary packages
-pkg install proot tar wget make -y
-
 if [ -d "$FEDORA" ]; then
     echo $FEDORA already exists
 else
+    # install necessary packages
+    pkg install proot tar wget -y
+
     mkdir $FEDORA
     cd $FEDORA
     # get the docker image
