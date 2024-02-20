@@ -54,7 +54,8 @@ fi
 
 # make a shortcut
 TOP=$(dirname $0)
-cp -p $TOP/fedora $STARTFEDORA
+cp $TOP/fedora $STARTFEDORA
+chmod +x $STARTFEDORA
 
 # all done
 echo "All done! Start Fedora with \'$(basename $STARTFEDORA)\'. Get updates with regular 'dnf update'."
