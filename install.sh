@@ -71,4 +71,8 @@ cp $TOP/fedora $STARTFEDORA
 chmod +x $STARTFEDORA
 
 # all done
-echo "All done! Start Fedora with '$(basename $STARTFEDORA)'. Get updates with regular 'dnf update'."
+echo "Done"
+
+if [ "$1" != "script" -a "$1" != "uninstall" ]; then
+    echo "Start Fedora with '$(basename $STARTFEDORA)'. Get updates with regular 'dnf update'."
+fi
