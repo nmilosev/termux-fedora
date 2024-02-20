@@ -21,13 +21,17 @@ case "$1" in
         https://*)
             DOCKERIMAGE=$1
             ;;
+        script)
+            ;;
 	*)
 	    echo $"Usage: $0 {f38|f39|TARURL|uninstall}"
 	    exit 2
 	    ;;
 esac
 
-if [ -d "$FEDORA" ]; then
+if [ "$1" = "script" ]; then
+    :
+elif [ -d "$FEDORA" ]; then
     if [ "$FEDORA" = "$HOME/fedora" ]; then
         fedora='~/fedora'
     else
