@@ -28,7 +28,13 @@ case "$1" in
 esac
 
 if [ -d "$FEDORA" ]; then
-    echo $FEDORA already exists
+    if [ "$FEDORA" = "$HOME/fedora" ]; then
+        fedora='~/fedora'
+    else
+        fedora=$FEDORA
+    fi
+    echo "$fedora exists"
+    echo "updating 'fedora' script"
 else
     # install necessary packages
     pkg install proot tar wget -y
@@ -51,10 +57,12 @@ else
 
     # fix DNS
     echo "nameserver 8.8.8.8" > $FEDORA/etc/resolv.conf
+
+    echo "installing 'fedora' script"
 fi
 
 # make a shortcut
-TOP=$(dirname $0)
+TOP=$(dirname "$0")
 cp $TOP/fedora $STARTFEDORA
 chmod +x $STARTFEDORA
 
