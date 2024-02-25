@@ -30,7 +30,7 @@ case "$1" in
 esac
 
 if [ "$1" = "script" ]; then
-    :
+    echo "updating 'fedora' script"
 elif [ -d "$FEDORA" ]; then
     if [ "$FEDORA" = "$HOME/fedora" ]; then
         fedora='~/fedora'
@@ -38,7 +38,7 @@ elif [ -d "$FEDORA" ]; then
         fedora=$FEDORA
     fi
     echo "$fedora exists"
-    echo "updating 'fedora' script"
+    exit 1
 else
     # install necessary packages
     pkg install proot tar wget -y
@@ -60,7 +60,7 @@ else
     rm fedora.tar.xz
 
     # fix DNS
-    echo "nameserver 8.8.8.8" > $FEDORA/etc/resolv.conf
+    echo "nameserver 8.8.8.8" > etc/resolv.conf
 
     echo "installing 'fedora' script"
 fi
@@ -71,7 +71,7 @@ cp $TOP/fedora $STARTFEDORA
 chmod +x $STARTFEDORA
 
 # all done
-echo "Done"
+echo "done"
 
 if [ "$1" != "script" -a "$1" != "uninstall" ]; then
     echo "Start Fedora with '$(basename $STARTFEDORA)'. Get updates with regular 'dnf update'."
