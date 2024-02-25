@@ -3,6 +3,7 @@
 TERMUX_BINDIR=/data/data/com.termux/files/usr/bin
 STARTFEDORA=$TERMUX_BINDIR/fedora
 FEDORA=~/fedora
+CWD=$PWD
 
 # input validator and help
 case "$1" in
@@ -67,7 +68,7 @@ fi
 
 # make a shortcut
 TOP=$(dirname "$0")
-cp $TOP/fedora $STARTFEDORA
+cp $CWD/$TOP/fedora $STARTFEDORA
 chmod +x $STARTFEDORA
 
 # all done
