@@ -1,0 +1,3 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+unset LD_PRELOAD && proot --link2symlink -0 -r ~/fedora -b /dev/ -b /sys/ -b /proc/ -b /storage/ -b $HOME -w /root /bin/env -i HOME=/root TERM="$TERM" LANG="$LANG" PATH=/usr/bin:/usr/sbin /bin/bash --login
